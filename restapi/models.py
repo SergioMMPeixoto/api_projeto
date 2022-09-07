@@ -19,3 +19,12 @@ class DayData(models.Model):
     foodWasted = models.FloatField()
     clients = models.IntegerField()
     absences = models.IntegerField()
+
+class Orders(models.Model):
+    orderID = models.CharField(max_length=50)
+    suplier = models.CharField(max_length=100)
+    ammount = models.FloatField()
+    item = models.CharField(max_length=100)
+    status = models.CharField(max_length=50)
+    statusBg = models.CharField(max_length=20, default="#FEC90F") 
+    image = models.CharField(max_length=50)

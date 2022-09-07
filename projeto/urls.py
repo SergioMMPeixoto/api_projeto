@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from restapi.views import MealViewSet, IngredientViewSet, DayDataViewSet
+from restapi.views import MealViewSet, IngredientViewSet, DayDataViewSet, OrdersViewSet
 
 meals_router = routers.SimpleRouter()
 meals_router.register(
@@ -31,6 +31,13 @@ daydata_retrieveLast = DayDataViewSet.as_view({
     'get': 'retrieveLast'
 })
 
+orders_router = routers.SimpleRouter()
+orders_router.register(
+    r'orders',
+    OrdersViewSet,
+    basename='order',
+)
+
 urlpatterns = [
     # Admin routes are registered here
 
@@ -38,4 +45,5 @@ urlpatterns = [
     path('api/', include(meals_router.urls)),
     path('api/', include(ingredients_router.urls)),
     path('api/', include(daydata_router.urls)),
+    path('api/', include(orders_router.urls)),
 ]

@@ -6,6 +6,8 @@ from .models import Ingredient
 from .serializers import IngredientSerializer
 from .models import DayData
 from .serializers import DayDataSerializer
+from .models import Orders
+from .serializers import OrdersSerializer
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
@@ -32,3 +34,6 @@ class DayDataViewSet(viewsets.ModelViewSet):
         serializer_class = DayDataSerializer(queryset)
         return Response(serializer_class.data)
 
+class OrdersViewSet(viewsets.ModelViewSet):
+    serializer_class = OrdersSerializer
+    queryset = Orders.objects.all()
